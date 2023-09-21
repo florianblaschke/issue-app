@@ -44,7 +44,7 @@ export async function PUT(req: NextRequest, { params: { slug } }: Props) {
   return NextResponse.json({ updatedProduct }, { status: 201 });
 }
 
-export async function DELETE(req: NextResponse, { params: { slug } }: Props) {
+export async function DELETE(req: NextRequest, { params: { slug } }: Props) {
   const productToDelete = await prisma.product.findUnique({
     where: { name: slug },
   });

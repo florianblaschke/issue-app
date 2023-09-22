@@ -7,7 +7,7 @@ interface Props {
 }
 
 export async function GET(request: NextRequest, { params: { id } }: Props) {
-  const user = await prisma.user.findUnique({ where: { id: parseInt(id) } });
+  const user = await prisma.user.findUnique({ where: { id: id } });
 
   if (!user)
     return NextResponse.json({ error: "User not found" }, { status: 404 });

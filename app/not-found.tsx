@@ -1,6 +1,7 @@
 import React from "react";
+import { headers } from "next/headers";
 
-const NotFoundPage = () => {
+const NotFoundPage = async () => {
   return <div>The requested Page does not exist</div>;
 };
 

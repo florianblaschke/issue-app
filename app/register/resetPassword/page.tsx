@@ -5,6 +5,7 @@ import { BaseSyntheticEvent, useState } from "react";
 export default function ResetPassword() {
   const [email, setEmail] = useState("");
   const [res, setRes] = useState(false);
+  const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
   async function verifyEmail(event: BaseSyntheticEvent) {
@@ -13,17 +14,25 @@ export default function ResetPassword() {
     const res = await fetch("/api/users", {
       method: "PATCH",
       headers: { "Content-Type": "application.json" },
-      body: JSON.stringify(email),
+      body: JSON.stringify({ email: email }),
     });
 
-    setRes(true);
+    if (res.ok) {
+      setRes(true);
+      const data = await res.json();
+    }
   }
-
-  async function newPassword(event: BaseSyntheticEvent) {
+  /*  async function newPassword(event: BaseSyntheticEvent) {
     event.preventDefault();
 
-    const res = await fetch("api/users");
-  }
+    const res = await fetch(`api/users/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application.json" },
+      body: JSON.stringify({ password: password }),
+    });
+
+    if (res.ok) return console.log("works");
+  } */
 
   return (
     <div className="flex-col justify-center">
@@ -47,7 +56,7 @@ export default function ResetPassword() {
           <label className="label ">Enter new password</label>
           <input
             onChange={(event: BaseSyntheticEvent) =>
-              setEmail(event.target.value)
+              setPassword(event.target.value)
             }
             placeholder="New password"
             className="input input-bordered "
@@ -55,7 +64,9 @@ export default function ResetPassword() {
           <button
             onClick={(event) => newPassword(event)}
             className="btn bg-primary"
-          ></button>
+          >
+            Change Password
+          </button>
         </>
       )}
     </div>

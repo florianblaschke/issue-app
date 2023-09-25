@@ -33,3 +33,15 @@ export async function POST(request: NextRequest) {
   });
   return NextResponse.json(newUser, { status: 201 });
 }
+
+export async function PATCH(req: NextRequest) {
+  const body = await req.json();
+  const pickedUser = await prisma.user.findUnique({
+    where: { email: body.email },
+  });
+
+  if (!pickedUser)
+    return NextResponse.json({ error: "User not found!" }, { status: 400 });
+
+  return NextResponse.json({ id: pickedUser.id }, { status: 200 });
+}

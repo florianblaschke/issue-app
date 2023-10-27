@@ -16,6 +16,7 @@
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
     "bcrypt": "^5.1.1",
+    "classnames": "^2.3.2",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "fast-sort": "^3.4.0",

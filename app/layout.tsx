@@ -4,8 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "./Navbar";
 import "./globals.css";
-import "./theme-config.css";
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="winter">
-      <body className={inter.variable}>
+      <body className={inter.className}>
         <Theme appearance="light" accentColor="violet">
           <Navbar />
           <main className="p-5">{children}</main>

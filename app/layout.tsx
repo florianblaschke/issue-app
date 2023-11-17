@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "./Navbar";
 import "./globals.css";
+import Provider from "./auth/Provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,12 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="winter">
       <body className={inter.className}>
-        <Theme accentColor="violet">
-          <Navbar />
-          <Container>
-            <main className="p-5">{children}</main>
-          </Container>
-        </Theme>
+        <Provider>
+          <Theme accentColor="violet">
+            <Navbar />
+            <Container>
+              <main className="p-5">{children}</main>
+            </Container>
+          </Theme>
+        </Provider>
       </body>
     </html>
   );

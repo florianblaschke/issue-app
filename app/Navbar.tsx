@@ -14,6 +14,7 @@ import {
   Text,
 } from "@radix-ui/themes";
 import Skeleton from "@/app/components/Skeleton";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
@@ -48,13 +49,13 @@ const AuthStatus = () => {
       <Box>
         <DropdownMenu.Root>
           <DropdownMenu.Trigger>
-            <Text className="cursor-pointer">Avatar</Text>
-            {/*  <Avatar
-            className="cursor-pointer"
-            fallback="?"
-            size="2"
-            radius="full"
-          /> */}
+            <Avatar
+              src={session.user?.image!}
+              className="cursor-pointer"
+              fallback="?"
+              size="2"
+              radius="full"
+            />
           </DropdownMenu.Trigger>
           <DropdownMenu.Content>
             <DropdownMenu.Label>
